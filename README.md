@@ -22,7 +22,7 @@ dependencies {
 ```groovy
 repositories {
     maven {
-        url = 'http://artifactory.kcell.kz/libs-release-local'
+        url = '${ARTIFACTORY_URL}'
     }
 }
 dependencies {
