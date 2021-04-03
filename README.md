@@ -3,7 +3,8 @@ Utility validator for msisdn, iin, bin, imei, imeiSV
 
 ## Getting Started
 
-### IMPORTANT
+##### If you interested to upload package to corporate artifactory, then read this block
+
 You can install it to the corporate artifactory and use as package
 I added needed configs to gradle file.
 ARTIFACTORY_URL = url to your artifactory
@@ -33,7 +34,7 @@ dependencies {
 }
 ```
 
-### Usage
+## Usage
 
 Add needed annotation on top of your variable.
 
