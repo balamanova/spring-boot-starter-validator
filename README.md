@@ -3,7 +3,10 @@ Utility validator for msisdn, iin, bin, imei, imeiSV
 
 ## Getting Started
 
-### Install it to the corporate artifactory
+### IMPORTANT
+You can install it to the corporate artifactory and use as package
+I added needed configs to gradle file.
+ARTIFACTORY_URL = url to your artifactory
 
 Just add it as dependency to your **build.gradle** (or **build.gradle.kts**)
 <br/><b>old gradle version</b>
