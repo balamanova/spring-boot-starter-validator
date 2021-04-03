@@ -1,0 +1,81 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'maven-publish'
+	id "com.jfrog.artifactory" version "4.10.0"
+}
+
+group = 'kz.progger.starter'
+version = '0.0.3'
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+allprojects {
+	repositories {
+		jcenter()
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation "org.springframework.boot:spring-boot-starter-validation"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.apache.commons:commons-lang3:3.9"
+	compileOnly "org.projectlombok:lombok:1.18.12"
+	annotationProcessor "org.projectlombok:lombok:1.18.12"
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+task sourcesJar(type: Jar) {
+	from(sourceSets.main.getAllSource()){
+		include '**/**.class'
+	}
+	with jar
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId = project.group
+			artifactId = project.name
+			version = project.version
+
+			from components.java
+			artifact(sourcesJar)
+		}
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+artifactory {
+	publish {
+		contextUrl = "${ARTIFACTORY_URL}"
+		repository {
+			setProperty("repoKey", "libs-release-local")
+			setProperty("username", project.properties["artifactory.username"])
+			setProperty("password", project.properties["artifactory.password"])
+			setProperty("maven", true)
+		}
+		defaults {
+			invokeMethod("publications", "maven")
+			setProperty("publishPom", true)
+			setProperty("publishArtifacts", true)
+		}
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+

@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "Imei",
+      "type": "kz.progger.starter.validator.imei.Imei",
+      "description": "Imei validation annotation"
+    },
+    {
+      "name": "ImeiSV",
+      "type": "kz.progger.starter.validator.imei.ImeiSV",
+      "description": "ImeiSV validation annotation"
+    },
+    {
+      "name": "Bin",
+      "type": "kz.progger.starter.validator.bin.Bin",
+      "description": "Bin validation annotation"
+    },
+    {
+      "name": "Msisdn",
+      "type": "kz.progger.starter.validator.msisdn.Msisdn",
+      "description": "Msisdn validation annotation"
+    },
+    {
+      "name": "ValidatablePeriod",
+      "type": "kz.progger.starter.validator.date.ValidatablePeriod",
+      "description": "ValidatablePeriod validation annotation"
+    },
+    {
+      "name": "LessThanOrEqualToday",
+      "type": "kz.progger.starter.validator.date.LessThanOrEqualToday",
+      "description": "LessThanOrEqualToday validation annotation"
+    }
+  ]
+}
